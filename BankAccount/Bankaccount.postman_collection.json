@@ -1,0 +1,278 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Bankaccount",
+		"_postman_id": "32f84d6b-7b7d-4962-4705-8ef81ce2296b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetAllClient",
+			"request": {
+				"url": "http://localhost:8080/banque/clients",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Trouver tous les clients"
+			},
+			"response": []
+		},
+		{
+			"name": "GetClientByEmail",
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/banque/client?email=aliou@Bankaccount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"banque",
+						"client"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "aliou@Bankaccount"
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Trouver un client par son email"
+			},
+			"response": []
+		},
+		{
+			"name": "PUTclient",
+			"request": {
+				"url": "http://localhost:8080/banque/client",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\"id\" : 1,\r\n        \"nom\": \"BAH\",\r\n        \"prenom\": \"ALIOU\",\r\n        \"email\": \"Anom.aliou@Bankaccount.com\",\r\n        \"adresse\": {\r\n            \"numero\": \"N°1\",\r\n            \"voie\": \"voie\",\r\n            \"ville\": \"ville\",\r\n            \"codePostal\": \"75001\",\r\n            \"pays\": \"ville1\"\r\n        },\r\n        \"comptes\": []\r\n}"
+				},
+				"description": "Mettre à jour des informations d'un client existatnt"
+			},
+			"response": []
+		},
+		{
+			"name": "POSTclient",
+			"request": {
+				"url": "http://localhost:8080/banque/client",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\"nom\": \"BAH\",\r\n        \"prenom\": \"ALIOU\",\r\n        \"email\": \"Anom.aliou@Bankaccount.com\",\r\n        \"adresse\": {\r\n            \"numero\": \"N°1\",\r\n            \"voie\": \"voie\",\r\n            \"ville\": \"ville\",\r\n            \"codePostal\": \"75001\",\r\n            \"pays\": \"ville1\"\r\n        },\r\n        \"comptes\": []\r\n}"
+				},
+				"description": "Ajouter un client"
+			},
+			"response": []
+		},
+		{
+			"name": "POSTclientWithAccount",
+			"request": {
+				"url": "http://localhost:8080/banque/client",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\"nom\": \"BAH\",\r\n        \"prenom\": \"ALIOU\",\r\n        \"email\": \"Anom.aliousdsdsdssdsdsds@Bankaccount.com\",\r\n        \"adresse\": {\r\n            \"numero\": \"N°1\",\r\n            \"voie\": \"voie\",\r\n            \"ville\": \"ville\",\r\n            \"codePostal\": \"75001\",\r\n            \"pays\": \"ville1\"\r\n        },\r\n        \"comptes\": [{\r\n                \"description\": \"Description cpt:A1\",\r\n                \"libelle\": \"Libelle cpt:A1\",\r\n                \"solde\": 300\r\n            },\r\n            {\r\n                \"description\": \"Description cpt:A2\",\r\n                \"libelle\": \"Libelle cpt:A2\",\r\n                \"solde\": 7\r\n            },\r\n            {\r\n                \"description\": \"Description cpt:A3\",\r\n                \"libelle\": \"Libelle cpt:A3\",\r\n                \"solde\": 0\r\n            },\r\n            {\r\n                \"description\": \"Description cpt:A4\",\r\n                \"libelle\": \"Libelle cpt:A4\",\r\n                \"solde\": 0\r\n            }]\r\n}"
+				},
+				"description": "Ajouter un client avec un ou plusieurs comptes"
+			},
+			"response": [
+				{
+					"id": "0748616d-522f-4195-8dad-9ec9d8694cc2",
+					"name": "response",
+					"_postman_previewlanguage": "Text",
+					"_postman_previewtype": "html",
+					"cookie": []
+				},
+				{
+					"id": "c63e8c26-9491-4395-83a2-19aca3bebeeb",
+					"name": "response",
+					"_postman_previewlanguage": "Text",
+					"_postman_previewtype": "html",
+					"cookie": []
+				},
+				{
+					"id": "a2070c71-bd7d-4a24-b08a-d0e18282d360",
+					"name": "response",
+					"_postman_previewlanguage": "Text",
+					"_postman_previewtype": "html",
+					"cookie": []
+				},
+				{
+					"id": "c29a8567-ef15-4ee9-b39e-113ec2da7d80",
+					"name": "response",
+					"_postman_previewlanguage": "Text",
+					"_postman_previewtype": "html",
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "getCompteByID",
+			"request": {
+				"url": "http://localhost:8080/banque/compte/25",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Trouver un compte par son identifiant"
+			},
+			"response": []
+		},
+		{
+			"name": "PutCompte",
+			"request": {
+				"url": "http://localhost:8080/banque/compte",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 25,\n    \"description\": \"Description cpt:A455555551\",\n    \"libelle\": \"Libelle cpt:A1\",\n    \"solde\": 300\n}"
+				},
+				"description": "Mettre à jour des informations d'un client existatnt"
+			},
+			"response": []
+		},
+		{
+			"name": "Postcomte",
+			"request": {
+				"url": "http://localhost:8080/banque/compte",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"Description cpt:A1\",\n    \"libelle\": \"Libelle cpt:A1\",\n    \"solde\": 3440\n}"
+				},
+				"description": "Ajouter un client"
+			},
+			"response": []
+		},
+		{
+			"name": "GetOperationByCompte",
+			"request": {
+				"url": "http://localhost:8080/banque/historique/compte/36",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Trouver toutes les operations sur ce compte"
+			},
+			"response": []
+		},
+		{
+			"name": "GetOperationByClient",
+			"request": {
+				"url": "http://localhost:8080/banque/historique/client/37",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Trouver toutes les operations de ce client"
+			},
+			"response": []
+		},
+		{
+			"name": "PostOperation",
+			"request": {
+				"url": "http://localhost:8080/banque/operation/4/5",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"dateCreation\": \"2022-02-10T21:35:07.000+00:00\",\n        \"message\": \"Plus ExaltIT\",\n        \"debit\": 0,\n        \"credit\": 500,\n        \"client\": {\n            \"id\": 37,\n            \"nom\": \"BAH\",\n            \"prenom\": \"Aliou\",\n            \"email\": \"aliousorya@gmail.com\",\n            \"adresse\": {\n                \"numero\": \"45\",\n                \"voie\": \"ChampsElysés\",\n                \"ville\": \"Paris\",\n                \"codePostal\": \"75008\",\n                \"pays\": \"France\"\n            },\n            \"comptes\": []\n        },\n        \"compte\": {\n            \"id\": 36,\n            \"description\": \"compte pricipale\",\n            \"libelle\": \"Compte courant personel\",\n            \"solde\": 300\n        }\n    }"
+				},
+				"description": "Effectuer une operation sur un compte d'un client"
+			},
+			"response": []
+		}
+	]
+}

@@ -2,15 +2,19 @@ package bankaccount.exaltit.service.serviceImpl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bankaccount.exaltit.controller.ClientController;
 import bankaccount.exaltit.data.model.Client;
 import bankaccount.exaltit.data.repository.ClientRepository;
 import bankaccount.exaltit.service.ClientService;
 
 @Service
 public class ClientServiceImpl implements ClientService {
+	Logger log = LoggerFactory.getLogger(ClientController.class);
 
 	@Autowired
 	private ClientRepository clientRepository;
@@ -25,23 +29,24 @@ public class ClientServiceImpl implements ClientService {
 	 */
 	@Override
 	public Client findByEmail(String email) {
-		return null;
+		return clientRepository.findByEmail(email).get();
 	}
 
 	/**
-	 * Trouve le client correspondant a cet idenfitiant
+	 * Trouve le client correspondant à cet idenfitiant
 	 */
 	@Override
 	public Client findById(Long id) {
-		return null;
+		return clientRepository.findById(id).get();
 	}
 
 	/**
-	 * Enregistre le client passe en parametre
+	 * Enregistre le client passé en parametre
 	 */
 	@Override
 	public Client save(Client client) {
-		return null;
+		log.info("sauvegarde du client " + client.getEmail());
+		return clientRepository.save(client);
 	}
 
 	/**
@@ -49,7 +54,7 @@ public class ClientServiceImpl implements ClientService {
 	 */
 	@Override
 	public List<Client> getAll() {
-		return null;
+		return (List<Client>) clientRepository.findAll();
 	}
-	
+
 }

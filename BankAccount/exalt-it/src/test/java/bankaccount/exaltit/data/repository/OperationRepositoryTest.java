@@ -44,8 +44,6 @@ public class OperationRepositoryTest {
 	@Test
 	public void testerSauvergardeOperation() {
 
-		// given
-
 		// Compte
 		Compte compte = new Compte(DESCRIPTION, LIBELLE, 0);
 		compteRepository.save(compte);
@@ -58,11 +56,9 @@ public class OperationRepositoryTest {
 		Timestamp nowTimestamp = new Timestamp(System.currentTimeMillis());
 		Operation operation = new Operation(nowTimestamp, "paie ExaltIT", 0, 300, client, compte);
 
-		// when
 		operationRepository.save(operation);
 		Optional<Operation> clientOperationResultat = operationRepository.findById(operation.getId());
 
-		// then
 		assertTrue(clientOperationResultat.isPresent(), "Il existe une operation enregistree en bd avec cet id");
 		assertEquals(operation, clientOperationResultat.get(),
 				"L'operation trouvee correspond bien a celle sauvegardee");
@@ -71,8 +67,6 @@ public class OperationRepositoryTest {
 	@Test
 	public void trouverOperationsParClient() {
 
-		// given
-
 		// Compte
 		Compte compte = new Compte(DESCRIPTION, LIBELLE, 0);
 		// Client
@@ -85,11 +79,9 @@ public class OperationRepositoryTest {
 		Operation operation = new Operation(nowTimestamp, "paie ExaltIT", 0, 300, client, compte);
 		ArrayList<Operation> operationsAttendus = new ArrayList<Operation>(Arrays.asList(operation));
 
-		// when
 		operationRepository.save(operation);
 		List<Operation> clientOperationResultat = operationRepository.findByClient(client);
 
-		// then
 		assertEquals(operationsAttendus, clientOperationResultat,
 				"Les operations trouvees correspondent bien a celles sauvegardees ");
 
@@ -97,8 +89,7 @@ public class OperationRepositoryTest {
 
 	@Test
 	public void trouverOperationsParCompte() {
-		// given
-
+		
 		// Compte
 		Compte compte = new Compte(DESCRIPTION, LIBELLE, 0);
 		// Client
@@ -111,19 +102,16 @@ public class OperationRepositoryTest {
 		Operation operation = new Operation(nowTimestamp, "paie ExaltIT", 0, 300, client, compte);
 		ArrayList<Operation> operationsAttendus = new ArrayList<Operation>(Arrays.asList(operation));
 
-		// when
 		operationRepository.save(operation);
 		List<Operation> clientOperationsResultat = operationRepository.findByClient(client);
 
-		// then
 		assertIterableEquals(operationsAttendus, clientOperationsResultat,
 				"Les operations trouvees correspondent bien a celles sauvegardees ");
 	}
 	
 	@Test
 	public void trouverOperationsParClientEtCompte() {
-		// given
-
+		
 		// Compte
 		Compte compte = new Compte(DESCRIPTION, LIBELLE, 0);
 		// Client
@@ -136,11 +124,9 @@ public class OperationRepositoryTest {
 		Operation operation = new Operation(nowTimestamp, "paie ExaltIT", 0, 300, client, compte);
 		ArrayList<Operation> operationsAttendus = new ArrayList<Operation>(Arrays.asList(operation));
 
-		// when
 		operationRepository.save(operation);
 		List<Operation> clientOperationsResultat = operationRepository.findByClientAndCompte(client, compte);
 
-		// then
 		assertIterableEquals(operationsAttendus, clientOperationsResultat,
 				"Les operations trouvees correspondent bien a celles sauvegardees ");
 	}

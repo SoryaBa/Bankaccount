@@ -48,7 +48,7 @@ public class Client {
 		this.prenom = prenom;
 		this.email = email;
 		this.adresse = adresse;
-		this.comptes = mesComptes == null ? new ArrayList<Compte>() : comptes;
+		this.comptes = mesComptes == null ? new ArrayList<Compte>() : mesComptes;
 	}
 
 	public Long getId() {
