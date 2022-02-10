@@ -1,9 +1,11 @@
 package bankaccount.exaltit.service.serviceImpl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import bankaccount.exaltit.controller.ClientController;
 import bankaccount.exaltit.data.model.Compte;
 import bankaccount.exaltit.data.repository.CompteRepository;
 import bankaccount.exaltit.service.CompteService;
@@ -11,6 +13,8 @@ import bankaccount.exaltit.service.CompteService;
 @Service
 public class CompteServiceImpl implements CompteService {
 	
+	Logger log = LoggerFactory.getLogger(ClientController.class);
+
 	@Autowired
 	CompteRepository compteRepository;
 
@@ -20,19 +24,20 @@ public class CompteServiceImpl implements CompteService {
 	}
 
 	/**
-	 * Trouve le compte correspondant a l identifiant passe en parametre
+	 * Trouver le compte correspondant à l'identifiant passé en parametre
 	 */
 	@Override
-	public Compte getCompteById(Long id) {
-		return null;
+	public Compte findById(Long id) {
+		return compteRepository.findById(id).get();
 	}
 
 	/**
-	 * Enregistre le compte passe en parametre
+	 * Enregistrer le compte passé en parametre
 	 */
 	@Override
 	public Compte save(Compte compte) {
-		return null;
+		log.info("sauvegarde du compte " + compte.getLibelle());
+		return compteRepository.save(compte);
 	}
 
 }

@@ -40,7 +40,7 @@ public class CompteServiceTest {
 		Long id = 1L;
 		ArgumentCaptor<Long> compteArgumentCaptor = ArgumentCaptor.forClass(Long.class);
 		when(compteRepository.findById(id)).thenReturn(Optional.of(compte0));
-		Compte resultat = compteService.getCompteById(id);
+		Compte resultat = compteService.findById(id);
 		
 		verify(compteRepository).findById(compteArgumentCaptor.capture());
 
@@ -54,7 +54,7 @@ public class CompteServiceTest {
 		when(compteRepository.save(compte0)).thenReturn(compte0);
 		Compte resultat = compteService.save(compte0);
 
-		verify(compteService).save(compteArgumentCaptor.capture());
+		verify(compteRepository).save(compteArgumentCaptor.capture());
 
 		assertEquals(compte0, compteArgumentCaptor.getValue());
 		assertEquals(compte0, resultat, "Le compte sauvegardé doit etre le meme que compte enregistré dans la bd");

@@ -38,7 +38,6 @@ public class ClientRepositoryTest {
 	@Test
 	void testTrouverClientParEmail() {
 
-		// given
 		String emailExistant = "A" + EMAIL;
 		String emailNonExistant = EMAIL;
 		Adresse adresse = new Adresse(NUMERO_VOIE, VOIE, VILLE, CODEPOSTALE_750XX + "08", PAYS);
@@ -46,12 +45,10 @@ public class ClientRepositoryTest {
 
 		clientRepository.save(client);
 
-		// when
 		Optional<Client> optionalClient = clientRepository.findByEmail(emailExistant);
 		boolean resultatEmailExistant = optionalClient.isPresent();
 		boolean resultatEmailNonExistant = clientRepository.findByEmail(emailNonExistant).isPresent();
 
-		// then
 		assertTrue("Trouver un client avec son email : ", resultatEmailExistant);
 		assertFalse("Ne pas trouver un client avec un email qui n'existe dans la BD : ", resultatEmailNonExistant);
 		assertEquals(client, optionalClient.get(), "Le client trouver par son email doit correspondre au client cherche");
@@ -60,17 +57,13 @@ public class ClientRepositoryTest {
 	@Test
 	void testSauvegardeClient() {
 
-		// given
 		Adresse adresse = new Adresse(NUMERO_VOIE, VOIE, VILLE, CODEPOSTALE_750XX + "08", PAYS);
 		Client client = new Client("A_" + NOM, "A_" + PRENOM, "A" + EMAIL, adresse, null);
 		
-
-		// when
 		clientRepository.save(client);
 		Long idDuClientSauvegarder = client.getId();
 		Optional<Client> optionalClient = clientRepository.findById(idDuClientSauvegarder);
 		
-		// then
 		assertEquals(client, optionalClient.get(), "Le client Enregistrer doit etre le meme que celui trouver par son Id");
 	}
 
@@ -86,8 +79,6 @@ public class ClientRepositoryTest {
 	 */
 	@Test
 	void testRelationClientCompte() {
-
-		// given
 
 		// client A
 		String emailClientA = "A" + EMAIL;
@@ -135,7 +126,6 @@ public class ClientRepositoryTest {
 		compteRepository.save(compteA1SauvegardeAvantAffectationAuCientVoisinA);
 		clientVoisinA.add(compteA1SauvegardeAvantAffectationAuCientVoisinA);
 
-		// when
 
 		// Sauvegarde du client A
 		clientRepository.save(clientA);
@@ -146,7 +136,6 @@ public class ClientRepositoryTest {
 
 		Client clientResultat = clientRepository.findByEmail(emailClientA).get();
 
-		// then
 
 		assertEquals(clientA, clientResultat,
 				"Le client trouver dans la base contenant plusieurs lignes doit correspondre au client cherche");

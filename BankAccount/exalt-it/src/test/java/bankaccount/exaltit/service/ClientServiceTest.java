@@ -51,10 +51,11 @@ public class ClientServiceTest {
 	
 	@Test
 	void testerRechercheParEmail() {
-		//when
+
 		ArgumentCaptor<String> clientArgumentCaptor = ArgumentCaptor.forClass(String.class);
 		when(clientRepository.findByEmail(EMAIL)).thenReturn(Optional.of(client0));
 		Client resultat = clientService.findByEmail(EMAIL);
+		
 		//verify(clientRepository).findByEmail(EMAIL);
 		verify(clientRepository).findByEmail(clientArgumentCaptor.capture());
 
@@ -68,6 +69,7 @@ public class ClientServiceTest {
 		ArgumentCaptor<Long> clientArgumentCaptor = ArgumentCaptor.forClass(Long.class);
 		when(clientRepository.findById(id)).thenReturn(Optional.of(client0));
 		Client resultat = clientService.findById(id);
+		
 		//verify(clientRepository).findById(id);
 		verify(clientRepository).findById(clientArgumentCaptor.capture());
 		

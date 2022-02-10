@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "operation")
 public class Operation {
@@ -24,7 +25,7 @@ public class Operation {
 	@Column(name = "datecreation")
 	Timestamp dateCreation;
 	String message ;
-	double debut;
+	double debit;
 	double credit;
 	
 	@OneToOne(cascade = {
@@ -38,20 +39,21 @@ public class Operation {
 	        CascadeType.MERGE})
     @JoinColumn(name = "id_compte", referencedColumnName = "id")
 	Compte compte;
-
-	public Operation(Timestamp dateCreation, String message, double debut, double credit, Client client,
+	
+	
+	
+	public Operation(Timestamp dateCreation, String message, double debit, double credit, Client client,
 			Compte compte) {
 		super();
 		this.dateCreation = dateCreation;
 		this.message = message;
-		this.debut = debut;
-		this.credit = credit;		
-		this.client = client;		
+		this.debit = debit;
+		this.credit = credit;
+		this.client = client;
 		this.compte = compte;
-	}	
-	
+	}
+
 	public Operation() {
-		super();
 	}
 
 	public Long getId() {
@@ -78,12 +80,12 @@ public class Operation {
 		this.message = message;
 	}
 
-	public double getDebut() {
-		return debut;
+	public double getDebit() {
+		return debit;
 	}
 
-	public void setDebut(double debut) {
-		this.debut = debut;
+	public void setDebit(double debit) {
+		this.debit = debit;
 	}
 
 	public double getCredit() {
@@ -93,7 +95,7 @@ public class Operation {
 	public void setCredit(double credit) {
 		this.credit = credit;
 	}
-	
+
 	public Client getClient() {
 		return client;
 	}
@@ -112,7 +114,7 @@ public class Operation {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(client, compte, credit, dateCreation, debut, id, message);
+		return Objects.hash(client, compte, credit, dateCreation, debit, id, message);
 	}
 
 	@Override
@@ -127,8 +129,8 @@ public class Operation {
 		return Objects.equals(client, other.client) && Objects.equals(compte, other.compte)
 				&& Double.doubleToLongBits(credit) == Double.doubleToLongBits(other.credit)
 				&& Objects.equals(dateCreation, other.dateCreation)
-				&& Double.doubleToLongBits(debut) == Double.doubleToLongBits(other.debut)
+				&& Double.doubleToLongBits(debit) == Double.doubleToLongBits(other.debit)
 				&& Objects.equals(id, other.id) && Objects.equals(message, other.message);
-	}	
+	}
 	
 }

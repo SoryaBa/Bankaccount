@@ -4,99 +4,94 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import bankaccount.exaltit.data.model.Adresse;
-import bankaccount.exaltit.data.model.Compte;
-
 public class ClientDTO {
-	
-		Long id;		
-		String nom;
-		String prenom;
-		String email;		
-		Adresse adresse;
-		List<Compte> comptes;
 
-		public ClientDTO() {
-		}
+	Long id;
+	String nom;
+	String prenom;
+	String email;
+	AdresseDTO adresse;
+	List<CompteDTO> comptes;
 
-		public ClientDTO(String nom, String prenom, String email, Adresse adresse, List<Compte> mesComptes) {
-			this.nom = nom;
-			this.prenom = prenom;
-			this.email = email;
-			this.adresse = adresse;
-			this.comptes = mesComptes == null ? new ArrayList<Compte>() : comptes;
-		}
+	public ClientDTO() {
+	}
 
-		public Long getId() {
-			return id;
-		}
+	public ClientDTO(String nom, String prenom, String email, AdresseDTO adresse, List<CompteDTO> mesComptes) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.adresse = adresse;
+		this.comptes = mesComptes == null ? new ArrayList<CompteDTO>() : comptes;
+	}
 
-		public void setId(Long id) {
-			this.id = id;
-		}
+	public Long getId() {
+		return id;
+	}
 
-		public String getNom() {
-			return nom;
-		}
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-		public void setNom(String nom) {
-			this.nom = nom;
-		}
+	public String getNom() {
+		return nom;
+	}
 
-		public String getPrenom() {
-			return prenom;
-		}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
-		public void setPrenom(String prenom) {
-			this.prenom = prenom;
-		}
+	public String getPrenom() {
+		return prenom;
+	}
 
-		public String getEmail() {
-			return email;
-		}
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
 
-		public void setEmail(String email) {
-			this.email = email;
-		}
+	public String getEmail() {
+		return email;
+	}
 
-		public Adresse getAdresse() {
-			return adresse;
-		}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-		public void setAdresse(Adresse adresse) {
-			this.adresse = adresse;
-		}
+	public AdresseDTO getAdresse() {
+		return adresse;
+	}
 
-		public List<Compte> getComptes() {
-			return comptes;
-		}
+	public void setAdresse(AdresseDTO adresse) {
+		this.adresse = adresse;
+	}
 
-		public void setComptes(List<Compte> comptes) {
-			this.comptes = comptes;
-		}
-		
-		public boolean add(Compte compte) {
-			return comptes.add(compte);
-		}
+	public List<CompteDTO> getComptes() {
+		return comptes;
+	}
 
-		@Override
-		public int hashCode() {
-			return Objects.hash(email, id, nom, prenom);
-		}
+	public void setComptes(List<CompteDTO> comptes) {
+		this.comptes = comptes;
+	}
 
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			ClientDTO other = (ClientDTO) obj;
-			return Objects.equals(email, other.email) && Objects.equals(id, other.id) && Objects.equals(nom, other.nom)
-					&& Objects.equals(prenom, other.prenom);
-		}
-		
-		
+	public boolean add(CompteDTO compte) {
+		return comptes.add(compte);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(email, id, nom, prenom);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ClientDTO other = (ClientDTO) obj;
+		return Objects.equals(email, other.email) && Objects.equals(id, other.id) && Objects.equals(nom, other.nom)
+				&& Objects.equals(prenom, other.prenom);
+	}
 
 }

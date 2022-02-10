@@ -2,7 +2,7 @@ package bankaccount.exaltit.data.dto;
 
 import java.util.Objects;
 
-public class AdresseDTO {	
+public class AdresseDTO {
 		
 		String numero;
 		String voie;

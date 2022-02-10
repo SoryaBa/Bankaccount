@@ -63,5 +63,4 @@ public class CompteDTO {
 					&& Double.doubleToLongBits(solde) == Double.doubleToLongBits(other.solde);
 		}
 		
-		
 }
