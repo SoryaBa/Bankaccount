@@ -44,3 +44,7 @@ I want to see the history (operation, date, amount, balance) of my operations
 ## Credits
 Inspiré par Les teams craftman de la SG CIB
 
+### L'application peut etre lancer à partir du main de la classe ExaltItApplication
+
+### Pour faciliter les tests un fichier Bankaccount.postman_collection.json est mis à disposition  
+
